@@ -15,16 +15,8 @@ do
     # Generate random content
     random_content=$(generate_random_string)
 
-    # Determine the number of lines in the file
-    total_lines=$(wc -l < example.txt)
-    total_lines=$((total_lines + 1)) # Increment to avoid division by zero
-
-    # Choose a random line number to insert the content
-    line_number=$(($RANDOM % total_lines + 1))
-
-    # Insert the random content into a random location in the file
-    sed -i '' "${line_number}i\\
-    $random_content" example.txt
+    # Append the random content to the end of the file on a new line
+    echo "$random_content" >> example.txt
 
     # Add and commit the change
     git add example.txt
