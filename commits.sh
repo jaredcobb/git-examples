@@ -5,7 +5,8 @@ echo "Initial content" > example.txt
 
 # Function to generate a random string
 generate_random_string() {
-    head /dev/urandom | tr -dc A-Za-z0-9 | head -c 10
+    # Using /dev/urandom and base64 for random string generation
+    head -c 10 /dev/urandom | base64 | head -c 10
 }
 
 # Repeat 20 times
